@@ -1,7 +1,6 @@
-
 import './app.css'
 import Header from "./components/Header/Header.component";
-
+import Home from './components/Home/Home.component';
 const App = () => {
 
   return (
@@ -9,6 +8,7 @@ const App = () => {
     <div className='app'>
 
       <Header />
+      <Home />
     </div>
 
   );
