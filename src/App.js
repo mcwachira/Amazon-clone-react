@@ -1,15 +1,14 @@
+
+import './app.css'
+import Header from "./components/Header/Header.component";
+
 const App = () => {
 
   return (
 
-    <div>
+    <div className='app'>
 
-      <h1>
-        hello world
-      </h1>
-      <h2>
-        Added a development branch
-      </h2>
+      <Header />
     </div>
 
   );
