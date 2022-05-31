@@ -6,8 +6,9 @@ import { ShoppingBasket } from '@mui/icons-material';
 import { useStateValue } from '../../context/StateProvider';
 const Header = () => {
 
-    const [{ basket }] = useStateValue()
-    console.log(basket)
+    const [{ user, basket }] = useStateValue()
+
+    const userEmail = user?.map((person) => (person.email))
     return (
         <div className="header">
 
@@ -22,15 +23,18 @@ const Header = () => {
 
 
             <div className="header__nav">
-                <div className="header__option">
-                    <span className='header__optionLineOne'>
-                        Hello Guest
-                    </span>
-                    <span className='header__optionLineTwo'>
 
-                        signIn
-                    </span>
-                </div>
+                <Link to='/login'>
+                    <div className="header__option">
+                        <span className='header__optionLineOne'>
+                            Hello  {userEmail}
+                        </span>
+                        <span className='header__optionLineTwo'>
+
+                            signIn
+                        </span>
+                    </div>
+                </Link>
                 <div className="header__option">
                     <span className='header__optionLineOne'>
                         Returns
@@ -60,7 +64,7 @@ const Header = () => {
                 </Link>
 
             </div>
-        </div>
+        </div >
     )
 }
 

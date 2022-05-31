@@ -1,6 +1,7 @@
 export const InitialState = {
     basket: [],
-    newBasket: [],
+ 
+    user:null
 }
 
 //Selector
@@ -39,6 +40,12 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 basket:newBasket,
+            };
+
+        case "SET_USER":
+            return {
+                ...state,
+                user: [...state.basket, action.user],
             };
 
         // basket: state.newBasket.filter((item) => (item.id !== action.id))
