@@ -4,7 +4,7 @@ import CheckoutProduct from '../Checkout-product/Checkout.component'
 import { useStateValue } from '../../context/StateProvider'
 import './Checkout.styles.css'
 const Checkout = () => {
-    const [{ basket }] = useStateValue()
+    const [{ basket, user }, dispatch] = useStateValue()
 
     console.log(basket)
     return (
@@ -15,6 +15,7 @@ const Checkout = () => {
 
                 <div>
                     <h2 className="checkout__title">
+                        <h3>hello {user?.email}</h3>
                         Your Shopping Cart
                     </h2>
 

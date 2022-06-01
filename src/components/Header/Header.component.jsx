@@ -4,11 +4,20 @@ import './Header.styles.css'
 import SearchIcon from '@mui/icons-material/Search';
 import { ShoppingBasket } from '@mui/icons-material';
 import { useStateValue } from '../../context/StateProvider';
+import { signOut } from "firebase/auth";
+import { auth } from '../../utils/firebase';
 const Header = () => {
 
     const [{ user, basket }] = useStateValue()
 
-    const userEmail = user?.map((person) => (person.email))
+    const userEmail = user?.map((person) => (person?.email))
+    const SignOut = () => {
+        signOut(auth).then(() => {
+
+        }).catch((error) => {
+            alert('error', error)
+        })
+    }
     return (
         <div className="header">
 
@@ -22,16 +31,19 @@ const Header = () => {
             </div>
 
 
-            <div className="header__nav">
+            <div className="header__nav" >
 
                 <Link to='/login'>
-                    <div className="header__option">
+                    {/* <Link to={!user && '/login'}> */}
+                    <div className="header__option" onClick={SignOut} >
                         <span className='header__optionLineOne'>
-                            Hello  {userEmail}
+
+                            {user ? <p> Hello {userEmail} </p> : <p> Hello Guest</p>
+                            }
+
                         </span>
                         <span className='header__optionLineTwo'>
-
-                            signIn
+                            {!user ? <p > Sign Out</p> : <p>Sign IN</p>}
                         </span>
                     </div>
                 </Link>
